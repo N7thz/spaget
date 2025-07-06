@@ -10,12 +10,22 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useCaseType } from "@/providers/case-provider"
+import { toast } from "sonner"
 
 export const Footer = () => {
 
     const { textFomated } = useCaseType()
 
-    console.log("textFomated", textFomated)
+    async function onCopy() {
+
+        await navigator.clipboard.writeText(textFomated)
+
+        toast(textFomated, {
+            description: "O texto foi copiado para a área de transferência.",
+            icon: <Copy className="size-4" />,
+        })
+
+    } 
 
     return (
         <CardFooter className="gap-2">
@@ -25,8 +35,7 @@ export const Footer = () => {
                     <Button
                         size={"icon"}
                         disabled={textFomated.length === 0}
-                        onClick={() => navigator.clipboard.writeText(textFomated)}
-                        onCopy={() => alert("Texto copiado para a área de transferência")}
+                        onClick={onCopy}
                     >
                         <Copy />
                     </Button>

@@ -14,7 +14,7 @@ const formSchema = z.object({
     text: z.string().min(1, "Digite a palavra ou frase"),
 })
 
-type FormData = z.infer<typeof formSchema>
+export type FormData = z.infer<typeof formSchema>
 
 export const Form = () => {
 
@@ -29,6 +29,8 @@ export const Form = () => {
         resolver: zodResolver(formSchema),
     })
 
+    const text = watch("text") as string | undefined
+
     function onSubmit({ text }: FormData) {
 
         if (caseType === "uppercase") {
@@ -39,8 +41,6 @@ export const Form = () => {
 
         return setTextFomated(capitalizeAll(text))
     }
-
-    const text = watch("text") as string | undefined
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -3,8 +3,9 @@ import { JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/providers/theme-provider"
 import { CaseTypeProvider } from "@/providers/case-provider"
 import { Backbround } from "@/components/backbround"
-import "./globals.css"
+import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils"
+import "./globals.css"
 
 const jet = JetBrains_Mono({ subsets: ["latin"] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           <CaseTypeProvider>
             <Backbround />
+            <Toaster />
             {children}
           </CaseTypeProvider>
         </ThemeProvider>
