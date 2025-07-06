@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "@/providers/theme-provider";
-import { CaseTypeProvider } from "@/providers/case-provider";
-import "./globals.css";
+import type { Metadata } from "next"
+import { JetBrains_Mono } from "next/font/google"
+import { ThemeProvider } from "@/providers/theme-provider"
+import { CaseTypeProvider } from "@/providers/case-provider"
+import { Backbround } from "@/components/backbround"
+import "./globals.css"
+import { cn } from "@/lib/utils"
 
-const jet = JetBrains_Mono({ subsets: ["latin"] });
+const jet = JetBrains_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,21 +16,22 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={jet.className}>
+      <body className={cn(jet.className, "h-dvh overflow-hidden flex")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
         >
           <CaseTypeProvider>
+            <Backbround />
             {children}
           </CaseTypeProvider>
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
