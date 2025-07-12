@@ -13,7 +13,7 @@ export function capitalize(word: string) {
 
 export function capitalizeAll(sentence: string): string {
   return sentence
-    .split(' ')
+    .split(" ")
     .map(capitalize)
-    .join(' ');
+    .join(" ");
 }

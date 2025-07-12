@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils"
 import { AnimatedGridPattern } from "./magicui/animated-grid-pattern"
+import { ComponentProps } from "react"
 
-export const Backbround = () => {
+export const Background = () => {
     return (
         <AnimatedGridPattern
             numSquares={30}

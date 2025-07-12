@@ -5,7 +5,9 @@ import { Separator } from "@/components/ui/separator"
 import { Form } from "@/components/form"
 import { Footer } from "@/components/footer"
 
-export default function Home() {
+export default async function Home() {
+
+  await new Promise((resolve) => setTimeout(resolve, 3000))
 
   return (
     <div className="flex-1 flex flex-col justify-between">
@@ -16,12 +18,10 @@ export default function Home() {
             <RadioGroup />
           </CardHeader>
           <Form />
-          <Separator
-            className="data-[orientation=horizontal]:w-[90%] mx-auto"
-          />
+          <Separator />
           <Footer />
         </Card>
       </main>
-    </div >
+    </div>
   )
 }
